@@ -19,7 +19,7 @@
           <div class="links">
             <a href="https://linkedin.com/in/manuel-joseph-candidato" target="_blank" rel="noopener" aria-label="LinkedIn" class="with-icon linkedin"><span class="icon icon-linkedin" aria-hidden="true"></span>LinkedIn</a>
             <a href="https://github.com/Mnmbrane/" target="_blank" rel="noopener" aria-label="GitHub" class="with-icon github"><span class="icon icon-github" aria-hidden="true"></span>GitHub</a>
-            <a href="#" id="download-pdf" class="with-icon pdf"><span class="icon icon-pdf" aria-hidden="true"></span>Download Resume</a>
+            <a href="#" id="download-pdf" class="with-icon pdf"><span class="icon icon-pdf" aria-hidden="true"></span><span class="label">Download Resume</span></a>
           </div>
           <section class="sidebar-block">
             <h2>Core Skills</h2>
@@ -95,11 +95,11 @@
           </div>
           <h4>Embedded (Platform &amp; Waveform)</h4>
           <ul>
-            <li>Integrated new tactical waveforms across multiple platforms: AN/PRC-158, AN/PRC-163, AN/PRC-167, and RF-7800H-MP.</li>
+            <li>Integrated new tactical waveforms across multiple platforms: <span class="nb">AN/PRC&#8209;158</span>, <span class="nb">AN/PRC&#8209;163</span>, <span class="nb">AN/PRC&#8209;167</span>, and <span class="nb">RF&#8209;7800H&#8209;MP</span>.</li>
             <li>Waveform experience includes SATCOM (IW/Integrated Waveform and DAMA), SINCGARS (frequency-hopping LOS), and LOS waveforms such as VULOS.</li>
-            <li>Ported and validated IW Phase 2 on the AN/PRC-158, enabling Demand Assigned Multiple Access capabilities.</li>
+            <li>Ported and validated IW Phase 2 on the <span class="nb">AN/PRC&#8209;158</span>, enabling Demand Assigned Multiple Access capabilities.</li>
             <li>Implemented HTTP-based file management using Mongoose to add/remove files on radios via the HTTP protocol.</li>
-            <li>Ported a SINCGARS mode onto AN/PRC-163 and AN/PRC-167 in collaboration with my Scrum team.</li>
+            <li>Ported a SINCGARS mode onto <span class="nb">AN/PRC&#8209;163</span> and <span class="nb">AN/PRC&#8209;167</span> in collaboration with my Scrum team.</li>
             <li>Delivered fixes and integration work across 163/167 platforms; supported V&amp;V and customer events.</li>
             <li>Implemented end-to-end features spanning platform, DSP, BSP, audio, and related subsystems.</li>
             <li>Reworked GNU Make packaging/build logic to improve maintainability and build consistency.</li>
@@ -140,11 +140,14 @@
         var el = document.querySelector('main.page');
         var link = byId('download-pdf');
         if (!el || !link) return;
-        link.textContent = 'Generating…';
+        document.body.classList.add('pdf-mode');
+        var label = link.querySelector('.label');
+        if (label) { label.textContent = 'Generating…'; }
         link.setAttribute('aria-busy', 'true');
         var done = function () {
-          link.textContent = 'Download PDF';
+          if (label) { label.textContent = 'Download Resume'; }
           link.removeAttribute('aria-busy');
+          document.body.classList.remove('pdf-mode');
         };
         if (window.html2pdf) {
           var opt = {
