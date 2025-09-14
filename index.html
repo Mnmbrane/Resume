@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manuel Joseph R. Candidato — Resume</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <div class="layout">
+        <aside class="sidebar">
+          <h1>Manuel Joseph R. Candidato</h1>
+          <p class="contact">
+            Rochester, NY<br />
+            <a href="tel:+15857339159">+1 (585) 733-9159</a><br />
+            <a href="mailto:manny.candidato@gmail.com">manny.candidato@gmail.com</a>
+          </p>
+          <div class="links">
+            <a href="https://linkedin.com/in/manuel-joseph-candidato" target="_blank" rel="noopener" aria-label="LinkedIn" class="with-icon linkedin"><span class="icon icon-linkedin" aria-hidden="true"></span>LinkedIn</a>
+            <a href="https://github.com/Mnmbrane/" target="_blank" rel="noopener" aria-label="GitHub" class="with-icon github"><span class="icon icon-github" aria-hidden="true"></span>GitHub</a>
+            <a href="#" id="download-pdf" class="with-icon pdf"><span class="icon icon-pdf" aria-hidden="true"></span>Download Resume</a>
+          </div>
+          <section class="sidebar-block">
+            <h2>Core Skills</h2>
+            <div class="skills">
+              <div><strong>Languages:</strong> Rust, C/C++, JavaScript/Typescript, Python, C#, Java</div>
+              <div><strong>DevOps/Build:</strong> Jenkins, CI/CD, artifact management, Git, SVN</div>
+              <div><strong>OS/Platforms:</strong> Linux/Unix, Windows, Qnx</div>
+            </div>
+          </section>
+          <section class="sidebar-block">
+            <h2>Education</h2>
+            <div class="education">
+              Fredonia University — B.S., Computer Science<br />
+              May 2016 • GPA: 3.38
+            </div>
+          </section>
+          <section class="sidebar-block">
+            <h2>Other Projects</h2>
+            <div class="projects">
+              <div class="project">
+                <div class="project-head">CHIP‑8 WASM — Browser Emulator</div>
+                <div class="project-links"><a href="https://github.com/Mnmbrane/chip-8-wasm" target="_blank" rel="noopener">GitHub</a></div>
+                <div class="project-desc">Browser‑based CHIP‑8 emulator targeting WebAssembly; runs classic ROMs with a lightweight UI.</div>
+                <div class="tags">
+                  <span class="tag">WebAssembly</span>
+                  <span class="tag">Emulation</span>
+                </div>
+              </div>
+
+              <div class="project">
+                <div class="project-head">LW_RPG — Character Viewer</div>
+                <div class="project-links"><a href="https://github.com/Mnmbrane/LW_RPG" target="_blank" rel="noopener">GitHub</a></div>
+                <div class="project-desc">Rust/WASM backend with JS frontend to browse and view RPG characters; includes GitHub Pages deploy tooling.</div>
+                <div class="tags">
+                  <span class="tag">Rust</span>
+                  <span class="tag">WebAssembly</span>
+                  <span class="tag">JavaScript</span>
+                </div>
+              </div>
+
+              <div class="project">
+                <div class="project-head">ContagiousGame — Disease Simulation</div>
+                <div class="project-links"><a href="https://github.com/Mnmbrane/ContagiousGame" target="_blank" rel="noopener">GitHub</a> • <a href="https://sapimpson.itch.io/bioville" target="_blank" rel="noopener">itch.io</a></div>
+                <div class="project-desc">Game‑jam project built with friends; simulates disease/virus spread dynamics and player interactions.</div>
+                <div class="tags">
+                  <span class="tag">Game Jam</span>
+                  <span class="tag">Simulation</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </aside>
+        <div class="content">
+
+      <section>
+        <h2>Summary</h2>
+        <p>
+          Embedded software engineer focused on tactical radio systems and waveforms.
+          I deliver platform and waveform level capabilities across multiple radio products, working from DSP/audio
+          through platform services to user‑facing interfaces to ship reliable, field‑tested communications.
+          I collaborate across hardware and software teams, partner with V&amp;V and customers, and build the tooling
+          (CI pipelines and hardware‑in‑the‑loop racks) that accelerates high‑quality releases.
+        </p>
+      </section>
+
+      <section>
+        <h2>Professional Experience</h2>
+
+        <article class="role">
+          <div class="role-head">
+            <h3>L3Harris Corporation — Software Engineer</h3>
+            <div>Rochester, NY • Nov 2017–Present</div>
+          </div>
+          <h4>Embedded (Platform &amp; Waveform)</h4>
+          <ul>
+            <li>Integrated new tactical waveforms across multiple platforms: AN/PRC-158, AN/PRC-163, AN/PRC-167, and RF-7800H-MP.</li>
+            <li>Waveform experience includes SATCOM (IW/Integrated Waveform and DAMA), SINCGARS (frequency-hopping LOS), and LOS waveforms such as VULOS.</li>
+            <li>Ported and validated IW Phase 2 on the AN/PRC-158, enabling Demand Assigned Multiple Access capabilities.</li>
+            <li>Implemented HTTP-based file management using Mongoose to add/remove files on radios via the HTTP protocol.</li>
+            <li>Ported a SINCGARS mode onto AN/PRC-163 and AN/PRC-167 in collaboration with my Scrum team.</li>
+            <li>Delivered fixes and integration work across 163/167 platforms; supported V&amp;V and customer events.</li>
+            <li>Implemented end-to-end features spanning platform, DSP, BSP, audio, and related subsystems.</li>
+            <li>Reworked GNU Make packaging/build logic to improve maintainability and build consistency.</li>
+          </ul>
+          <h4>DevOps</h4>
+          <ul>
+            <li>Created a Jenkins pipeline for a new tactical waveform, establishing a repeatable, automated path from source to validation.</li>
+            <li>Implemented build → deploy → test stages triggered on new commits and pull requests, producing artifacts and test results for reviews.</li>
+            <li>Built and maintained CI racks for hardware-in-the-loop testing; deployed images to radios in the racks for automated verification.</li>
+            <li>Partnered with development teams to improve pipeline stability and feedback time, aligning CI with project needs.</li>
+          </ul>
+        </article>
+
+        <article class="role">
+          <div class="role-head">
+            <h3>Lockheed Martin — Software Engineer</h3>
+            <div>Owego, NY • Jun 2016–Nov 2017</div>
+          </div>
+          <ul>
+            <li>Supported the HH‑60W Combat Rescue Helicopter program, integrating radios with aircraft subsystems including cockpit displays.</li>
+            <li>Implemented FACE‑conformant components to enable communication across hardware and software modules.</li>
+            <li>Integrated and tested Link 16 (L16), SADL, and CIB devices to process tactical messages and imagery.</li>
+            <li>Developed test workflows and tools to validate message handling and system behavior; collaborated with avionics teams during integration events.</li>
+          </ul>
+        </article>
+      </section>
+
+      
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js" defer></script>
+  <script>
+    (function () {
+      function byId(id) { return document.getElementById(id); }
+      function generate() {
+        var el = document.querySelector('main.page');
+        var link = byId('download-pdf');
+        if (!el || !link) return;
+        link.textContent = 'Generating…';
+        link.setAttribute('aria-busy', 'true');
+        var done = function () {
+          link.textContent = 'Download PDF';
+          link.removeAttribute('aria-busy');
+        };
+        if (window.html2pdf) {
+          var opt = {
+            margin:       0.5,
+            filename:     'Resume.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: window.devicePixelRatio > 1 ? 2 : 1, useCORS: true },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+            pagebreak:    { mode: ['css', 'legacy'], avoid: ['li', 'h2', 'h3', 'h4', '.role-head'] }
+          };
+          window.html2pdf().set(opt).from(el).save().then(done).catch(function() {
+            done();
+            window.print();
+          });
+        } else {
+          done();
+          window.print();
+        }
+      }
+      window.addEventListener('DOMContentLoaded', function () {
+        var link = byId('download-pdf');
+        if (link) {
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+            generate();
+          });
+        }
+      });
+    })();
+  </script>
+  </html>
