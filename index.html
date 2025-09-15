@@ -74,18 +74,20 @@
         </aside>
         <div class="content">
 
-      <section>
+      <section class="section section-accent">
         <h2>Summary</h2>
-        <p>
+        <div class="role">
+          <p>
           Embedded software engineer focused on tactical radio systems and waveforms.
           I deliver platform and waveform level capabilities across multiple radio products, working from DSP/audio
           through platform services to user‑facing interfaces to ship reliable, field‑tested communications.
           I collaborate across hardware and software teams, partner with V&amp;V and customers, and build the tooling
           (CI pipelines and hardware‑in‑the‑loop racks) that accelerates high‑quality releases.
         </p>
+        </div>
       </section>
 
-      <section>
+      <section class="section section-accent">
         <h2>Professional Experience</h2>
 
         <article class="role">
@@ -97,9 +99,9 @@
           <ul>
             <li>Integrated new tactical waveforms across multiple platforms: <span class="nb">AN/PRC&#8209;158</span>, <span class="nb">AN/PRC&#8209;163</span>, <span class="nb">AN/PRC&#8209;167</span>, and <span class="nb">RF&#8209;7800H&#8209;MP</span>.</li>
             <li>Waveform experience includes SATCOM (IW/Integrated Waveform and DAMA), SINCGARS (frequency-hopping LOS), and LOS waveforms such as VULOS.</li>
-            <li>Ported and validated IW Phase 2 on the <span class="nb">AN/PRC&#8209;158</span>, enabling Demand Assigned Multiple Access capabilities.</li>
+            <li>Ported and validated new IW features on the <span class="nb">AN/PRC&#8209;158</span>, to enable Demand Assigned Multiple Access capabilities.</li>
             <li>Implemented HTTP-based file management using Mongoose to add/remove files on radios via the HTTP protocol.</li>
-            <li>Ported a SINCGARS mode onto <span class="nb">AN/PRC&#8209;163</span> and <span class="nb">AN/PRC&#8209;167</span> in collaboration with my Scrum team.</li>
+            <li>Ported a SINCGARS mode onto <span class="nb">AN/PRC&#8209;163</span> and <span class="nb">AN/PRC&#8209;167</span>.</li>
             <li>Delivered fixes and integration work across 163/167 platforms; supported V&amp;V and customer events.</li>
             <li>Implemented end-to-end features spanning platform, DSP, BSP, audio, and related subsystems.</li>
             <li>Reworked GNU Make packaging/build logic to improve maintainability and build consistency.</li>
@@ -158,6 +160,8 @@
           document.body.classList.remove('pdf-mode');
         };
         if (window.html2pdf) {
+          // Enter PDF mode (tweaks fonts/links for capture)
+          document.body.classList.add('pdf-mode');
           var opt = {
             margin:       0.5,
             filename:     'Resume.pdf',
@@ -166,7 +170,11 @@
             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
             pagebreak:    { mode: ['css', 'legacy'], avoid: ['li', 'h2', 'h3', 'h4', '.role-head'] }
           };
-          window.html2pdf().set(opt).from(el).save().then(done).catch(function() {
+          window.html2pdf().set(opt).from(el).save().then(function(){
+            document.body.classList.remove('pdf-mode');
+            done();
+          }).catch(function() {
+            document.body.classList.remove('pdf-mode');
             done();
             window.print();
           });

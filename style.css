@@ -1,36 +1,51 @@
-/* Simple, print-friendly resume styles */
+/* Professional, print-friendly color system */
 :root {
-  --text: #1a1a1a;
-  --muted: #555;
-  --accent: #0b5fff;
+  --text: #121826;
+  --muted: #5b6372;
+  --accent: #0a5bd3;          /* primary brand blue */
+  --accent-2: #5b8def;        /* secondary accent */
+  --bg: #f5f7fb;              /* app background */
+  --card-bg: #ffffff;         /* sheet background */
+  --shadow: 0 10px 32px rgba(16, 37, 84, 0.08);
+  --soft-accent-bg: #eef3ff;  /* tag background */
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; background: var(--bg); }
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   color: var(--text);
   line-height: 1.5;
-  background: #fff;
   /* Improve html2pdf canvas text stability */
   font-kerning: none;
   font-feature-settings: "liga" 0, "clig" 0;
 }
+/* Slightly reduce font size during PDF generation (html2pdf) */
+body.pdf-mode { font-size: 0.95em; }
 
 .page {
-  max-width: 900px;
-  margin: 32px auto;
-  padding: 0 20px 48px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 24px 48px 0;
+  background: var(--card-bg);
+  border-radius: 0;
+  box-shadow: none;
 }
 
-.layout { display: flex; gap: 24px; align-items: flex-start; }
-.sidebar { flex: 0 0 260px; max-width: 260px; padding-right: 16px; border-right: 1px solid #eee; }
-.content { flex: 1 1 auto; min-width: 0; }
+.layout { display: flex; gap: 0; align-items: stretch; min-height: 100vh; }
+.sidebar {
+  flex: 0 0 280px;
+  max-width: 280px;
+  padding: 20px 18px 18px 20px;
+  background: linear-gradient(180deg, #f2f5ff 0%, #faf8ff 100%);
+  border-right: 1px solid #e6e9f5;
+}
+.content { flex: 1 1 auto; min-width: 0; padding: 20px 24px 48px; }
 .content a { color: var(--accent); text-decoration: underline; font-weight: 600; }
 .sidebar h1 { margin: 0 0 6px; font-size: 1.8rem; line-height: 1.2; }
 .contact { margin: 0; color: var(--muted); }
 .contact a { color: inherit; text-decoration: none; border-bottom: 1px dotted #ccc; }
-.links { color: var(--muted); margin-top: 6px; }
+.links { color: var(--muted); margin-top: 10px; }
 .links a { color: var(--accent); text-decoration: underline; display: block; margin: 4px 0; font-weight: 600; }
 .links a:hover { text-decoration: underline; }
 .pdf-mode .links, .pdf-mode .project-links { display: none !important; }
@@ -47,12 +62,22 @@ body {
 .sidebar .compact { margin-left: 18px; }
 .sidebar h2 {
   font-size: 1.1rem;
-  font-weight: 700;
-  margin: 14px 0 6px;
+  font-weight: 800;
+  margin: 14px 0 8px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  border-bottom: 2px solid #e5e5e5;
+  letter-spacing: 0.05em;
   padding-bottom: 4px;
+  position: relative;
+}
+.sidebar h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 56px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 999px;
 }
 .sidebar .education { margin-top: 6px; font-size: 0.95rem; }
 .sidebar .skills { margin-top: 6px; font-size: 0.95rem; }
@@ -64,12 +89,45 @@ body {
 .sidebar .project-links a { color: var(--accent); text-decoration: underline; font-weight: 600; }
 .sidebar .project-desc { color: var(--muted); margin-top: 2px; }
 .tags { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 4px; }
-.tag { font-size: 0.82em; padding: 2px 6px; border: 1px solid #ddd; border-radius: 999px; color: #444; background: #fafafa; }
+.tag { font-size: 0.82em; padding: 2px 6px; border: 1px solid #cfe0ff; border-radius: 999px; color: #23407a; background: var(--soft-accent-bg); }
 
 h2 { margin: 24px 0 8px; font-size: 1.1rem; letter-spacing: 0.02em; text-transform: uppercase; }
+h2 { color: #0f1d40; }
+/* Remove any decorative left bars on section headings */
+.content h2::before { content: none !important; }
+h2 { color: #0f1d40; }
+.content h2 { position: relative; padding-left: 12px; }
+.content h2::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 3px; bottom: 3px;
+  width: 4px; border-radius: 4px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+}
 h3 { margin: 0; font-size: 1rem; }
 h4 { margin: 8px 0 0; font-size: 0.98rem; font-weight: 600; color: var(--muted); }
 section { margin-top: 18px; }
+/* Section framing for better separation */
+.section { margin-top: 24px; }
+/* Accent sections without a vertical bar: use a top rule and a bold gradient underline under the heading */
+.section-accent { padding-top: 12px; border-top: 2px solid #e6eaf7; }
+/* Remove top rule for the first accented section (Summary) */
+.content > .section-accent:first-of-type { border-top: 0; padding-top: 0; }
+/* Remove top rule when two accented sections are adjacent (e.g., Summary -> Professional Experience) */
+.content > .section-accent + .section-accent { border-top: 0; padding-top: 0; }
+.section-accent > h2 { position: relative; padding-bottom: 8px; margin-bottom: 14px; border-bottom: none; }
+.section-accent > h2::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 3px; width: 56px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 6px;
+}
+/* Card-style section (used for Summary) */
+.section-card { background: #fff; border: 1px solid #e6eaf7; border-radius: 10px; padding: 14px 16px; }
+.section-card > h2 { margin-top: 0; padding-bottom: 8px; border-bottom: 1px solid #edf1fb; position: static; }
+.section-card > h2::after { content: none !important; }
 ul { margin: 8px 0 0 20px; }
 ul.compact { margin: 6px 0 0 18px; }
 li { margin: 6px 0; }
@@ -86,20 +144,28 @@ li { margin: 6px 0; }
 /* Ensure link-symbol in content is not underlined */
 .content a.ref { text-decoration: none; }
 
-.role { margin: 12px 0 16px; }
-.role-head { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
-.role-head h3 { color: var(--text); }
+.role { margin: 16px 0; padding: 14px 16px; background: #fff; border: 1px solid #e6eaf7; border-radius: 10px; }
+.role-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; color: var(--muted); padding-bottom: 8px; border-bottom: 1px solid #edf1fb; }
+.role-head h3 { color: #0f1d40; font-weight: 700; }
+/* Sub-headings within roles */
+.role h4 { margin-top: 12px; font-weight: 700; color: #28324a; padding-top: 8px; border-top: 1px solid #edf1fb; }
+/* Avoid double rule only when an h4 immediately follows the role header */
+.role-head + h4 { border-top: 0; padding-top: 0; }
+/* Space stacked role cards evenly */
+.role + .role { margin-top: 18px; }
 
 .footer { margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
 
 @media (max-width: 800px) {
   .layout { display: block; }
-  .sidebar { border-right: none; border-bottom: 1px solid #eee; padding-bottom: 12px; margin-bottom: 16px; }
+  .sidebar { border-right: none; border-bottom: 1px solid #eee; padding: 18px 18px 14px; }
 }
 
 @media print {
   @page { margin: 0.5in; }
-  .page { max-width: none; margin: 0; padding: 0; }
+  body { background: #fff; }
+  .page { max-width: none; margin: 0; padding: 0; box-shadow: none; border-radius: 0; }
+  .sidebar { background: none; border-right: none; }
   a { color: inherit; text-decoration: none; }
   .footer .note { display: none; }
   /* Hide links when printing */
